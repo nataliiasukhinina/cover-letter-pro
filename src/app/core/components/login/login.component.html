@@ -1,7 +1,50 @@
-<div class="row">
-  <div class="col-12">
-    <form [formGroup]="loginForm">
+<div class="row justify-content-center align-middle mt-5">
+  <div class="col-12 col-md-6">
+    <div class="alert alert-info">
+      <p>This form was created as a Reactive Angular Form. It implements built-in and custom validators.</p>
+    </div>
+  </div>
+</div>
+<div class="row justify-content-center align-middle mt-5">
+  <div class="col-12 col-md-6">
+    <form [formGroup]="loginForm" class="row">
 
+      <div class="col-12 my-2">
+        <mat-form-field>
+          <mat-label>Username</mat-label>
+          <input formControlName="username" matInput placeholder="Enter username">
+          <mat-icon matSuffix>person</mat-icon>
+          <mat-hint>This field is restricted to accept letters only.</mat-hint>
+          <mat-error>This field is restricted to accept letters only.</mat-error>
+        </mat-form-field>
+
+      </div>
+
+      <div class="col-12 my-2">
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Enter password" [type]="hidePassword ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-hint>You can type anything you want in this field.</mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 my-2">
+        <mat-form-field>
+          <mat-label>Confirm Password</mat-label>
+          <input matInput placeholder="Confirm password" [type]="hideConfirmPassword ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword">
+            <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-hint>This field should match what you entered in the password field.</mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 my-2">
+        <button class="btn btn-success" type="submit" aria-label="Submit form">Submit</button>
+      </div>
     </form>
   </div>
 </div>
