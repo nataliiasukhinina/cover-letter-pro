@@ -12,13 +12,15 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import { HomePageComponent } from './components/home-page/home-page.component';
 import {CoreRoutingModule} from "./core-routing.module";
 import {SharedModule} from "../shared/shared.module";
+import { CoverLetterComponent } from './components/cover-letter/cover-letter.component';
 
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    HomePageComponent
+    HomePageComponent,
+    CoverLetterComponent
   ],
   imports: [
     CommonModule,
