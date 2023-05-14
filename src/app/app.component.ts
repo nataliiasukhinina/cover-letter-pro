@@ -16,6 +16,7 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    console.log(process.env['OPENAI_API_KEY'])
     this.authService.loggedIn.subscribe(
       (value: boolean) => {
         this.isLoggedIn = value;

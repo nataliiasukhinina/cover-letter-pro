@@ -63,8 +63,9 @@ amplifytools.xcconfig
 **.sample
 #amplify-do-not-edit-end
 
-#openai
-openai.js
+#env vars
+secrets.env
+.env
 
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
