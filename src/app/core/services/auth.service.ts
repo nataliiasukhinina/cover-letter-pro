@@ -43,7 +43,6 @@ export class AuthService {
     return fromPromise(Auth.currentAuthenticatedUser())
       .pipe(
         map(result => {
-          console.log(result)
           this.loggedIn.next(true);
           return true;
         }),
