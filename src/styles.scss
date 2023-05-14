@@ -3,7 +3,11 @@
 @import '@aws-amplify/ui-angular/theme.css';
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 16px !important;
+}
 
 .callout {
   padding: 20px;

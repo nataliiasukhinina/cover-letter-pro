@@ -4,8 +4,7 @@ import {OpenAiService} from "../../services/open-ai.service";
 
 @Component({
   selector: 'demo-cover-letter',
-  templateUrl: './cover-letter.component.html',
-  styleUrls: ['./cover-letter.component.css']
+  templateUrl: './cover-letter.component.html'
 })
 export class CoverLetterComponent implements OnInit {
 
@@ -46,6 +45,7 @@ export class CoverLetterComponent implements OnInit {
         },
         (error) => {
           console.log(error);
+          this.coverLetterText = "Sorry! Something went wrong. What a shame..."
           this.loadingInProgress = false;
         },
         () => {
