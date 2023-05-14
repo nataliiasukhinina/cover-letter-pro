@@ -36,7 +36,7 @@
           <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
             <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
-          <mat-hint>You can type anything you want in this field.</mat-hint>
+          <mat-hint>Message me on <a href="https://www.linkedin.com/in/natashasukhinina/">LinkedIn</a> to get the password.</mat-hint>
           <mat-error *ngIf="hasError('password', 'required')">This field is required.</mat-error>
         </mat-form-field>
       </div>
@@ -56,7 +56,7 @@
           <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword">
             <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
-          <mat-hint>This field should match what you entered in the password field.</mat-hint>
+          <mat-hint>Please enter the password one more time.</mat-hint>
           <mat-error *ngIf="hasError('confirmPassword', 'required')">This field is required.</mat-error>
         </mat-form-field>
       </div>

@@ -10,18 +10,24 @@ import {AuthService} from "./core/services/auth.service";
 export class AppComponent implements OnInit, OnDestroy {
   title = 'demo-app';
   subscription!: Subscription;
+  isLoggedIn: boolean = false;
   user: string = '';
-  loggedIn: boolean = false;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.authService.getUser().subscribe(
-      (response) => {
-        this.user = response.username;
+    this.authService.loggedIn.subscribe(
+      (value: boolean) => {
+        this.isLoggedIn = value;
+        if(this.isLoggedIn) {
+          this.authService.getUser().subscribe(
+            (response) => {
+              this.user = response.username;
+            }
+          );
+        }
       }
     );
-
   }
 
   ngOnDestroy() {

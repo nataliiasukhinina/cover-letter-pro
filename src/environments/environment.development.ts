@@ -1,10 +1,9 @@
 // @ts-ignore
-import awsconfig from '../aws-exports';
-// @ts-ignore
-import openAiConfig from '../openai';
+import awsConfig from '../aws-exports';
 
 export const environment = {
-  amplify: awsconfig,
-  openAiApiKey: openAiConfig.api_key,
-  openAiOrganization: openAiConfig.organization_id
+  production: false,
+  amplify: awsConfig,
+  openAiApiKey: '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',
+  openAiOrganization: 'org-KOOCC1Ru8jtVOg1g6ycSKGpf'
 };
