@@ -12,7 +12,8 @@ export class OpenAiInterceptor implements HttpInterceptor {
 
       const openAiRequest: HttpRequest<any> = httpRequest.clone({
         setHeaders: {
-          Authorization: `Bearer ${process.env['OPENAI_API_KEY']}`,
+          // @ts-ignore
+          Authorization: `Bearer ${JSON.parse(process.env.secrets)['OPENAI_API_KEY']}`,
           'OpenAI-Organization': 'org-KOOCC1Ru8jtVOg1g6ycSKGpf'
         }
       });
