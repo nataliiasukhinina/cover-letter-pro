@@ -11,6 +11,7 @@ import {MatListModule} from "@angular/material/list";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { HomePageComponent } from './components/home-page/home-page.component';
 import {CoreRoutingModule} from "./core-routing.module";
+import {SharedModule} from "../shared/shared.module";
 
 
 
@@ -29,7 +30,8 @@ import {CoreRoutingModule} from "./core-routing.module";
     MatButtonModule,
     MatListModule,
     MatTooltipModule,
-    CoreRoutingModule
+    CoreRoutingModule,
+    SharedModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}

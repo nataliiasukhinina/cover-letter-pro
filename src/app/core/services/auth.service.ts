@@ -7,11 +7,12 @@ import { map, tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import {Amplify,  Auth } from 'aws-amplify';
 import {environment} from "../../../environments/environment";
+import {User} from "../models/User";
 
 @Injectable()
 export class AuthService {
 
-  public loggedIn: BehaviorSubject<boolean>;
+  loggedIn: BehaviorSubject<boolean>;
 
   constructor(
     private router: Router
@@ -21,17 +22,17 @@ export class AuthService {
   }
 
   /** signup */
-  public signUp(email: string, password: string): Observable<any> {
+  signUp(email: string, password: string): Observable<any> {
     return fromPromise(Auth.signUp(email, password));
   }
 
   /** confirm code */
-  public confirmSignUp(email: string, code: string): Observable<any> {
+  confirmSignUp(email: string, code: string): Observable<any> {
     return fromPromise(Auth.confirmSignUp(email, code));
   }
 
   /** signin */
-  public signIn(email: string, password: string): Observable<any> {
+  signIn(email: string, password: string): Observable<any> {
     return fromPromise(Auth.signIn(email, password))
       .pipe(
         tap(() => this.loggedIn.next(true))
@@ -39,7 +40,7 @@ export class AuthService {
   }
 
   /** get authenticated state */
-  public isAuthenticated(): Observable<boolean> {
+  isAuthenticated(): Observable<boolean> {
     return fromPromise(Auth.currentAuthenticatedUser())
       .pipe(
         map(result => {
@@ -55,7 +56,7 @@ export class AuthService {
   }
 
   /** signout */
-  public signOut() {
+  signOut() {
     fromPromise(Auth.signOut())
       .subscribe(
         result => {
@@ -64,5 +65,9 @@ export class AuthService {
         },
         error => console.log(error)
       );
+  }
+
+  getUser(): Observable<User> {
+    return fromPromise(Auth.currentUserInfo());
   }
 }

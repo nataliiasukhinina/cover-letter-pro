@@ -8,6 +8,7 @@ import {AmplifyAuthenticatorModule} from "@aws-amplify/ui-angular";
 import {Amplify} from "aws-amplify";
 // @ts-ignore
 import awsconfig from '../aws-exports';
+import {SharedModule} from "./shared/shared.module";
 
 Amplify.configure(awsconfig);
 @NgModule({
@@ -19,7 +20,8 @@ Amplify.configure(awsconfig);
     BrowserAnimationsModule,
     AppRoutingModule,
     CoreModule,
-    AmplifyAuthenticatorModule
+    AmplifyAuthenticatorModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
