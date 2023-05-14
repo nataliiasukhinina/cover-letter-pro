@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatchingFieldsValidator} from "../../validators/matching-fields.validator";
-import { Auth } from 'aws-amplify';
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
 @Component({
@@ -46,13 +45,11 @@ export class LoginComponent implements OnInit{
       const password = this.loginForm.get('password')?.value;
       this.authService.signIn(username, password).subscribe(
         (response) => {
-          console.log(response)
         },
         (error) => {
           console.log(error)
         },
         () => {
-          console.log('here')
           this.router.navigate(['/home']);
         }
       );

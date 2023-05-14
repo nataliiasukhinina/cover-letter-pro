@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import {RouterLink, RouterLinkActive} from "@angular/router";
 
 
 
@@ -9,7 +10,12 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     NavigationComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterLinkActive,
+    RouterLink
+  ],
+  exports: [
+    NavigationComponent
   ]
 })
 export class SharedModule { }
