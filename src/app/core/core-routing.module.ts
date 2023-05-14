@@ -3,6 +3,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {HomePageComponent} from "./components/home-page/home-page.component";
 import {authGuard} from "./guards/auth.guard";
 import {AuthService} from "./services/auth.service";
+import {CoverLetterComponent} from "./components/cover-letter/cover-letter.component";
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   }, {
     path: 'home',
     component: HomePageComponent,
+    canActivate: [authGuard]
+  }, {
+    path: 'cover-letter',
+    component: CoverLetterComponent,
     canActivate: [authGuard]
   }
 ];
