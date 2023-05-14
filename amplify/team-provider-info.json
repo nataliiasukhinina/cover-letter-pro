@@ -10,6 +10,18 @@
       "StackName": "amplify-demoapp-staging-220916",
       "StackId": "arn:aws:cloudformation:us-east-2:624826974879:stack/amplify-demoapp-staging-220916/cd9f09f0-f1da-11ed-8f44-0a2a8d92f85b",
       "AmplifyAppId": "d3uymwp91ml3de"
+    },
+    "categories": {
+      "auth": {
+        "demoapp": {}
+      },
+      "function": {
+        "OPENAI": {
+          "secretsPathAmplifyAppId": "d3uymwp91ml3de",
+          "deploymentBucketName": "amplify-demoapp-staging-220916-deployment",
+          "s3Key": "amplify-builds/OPENAI-6638426d6f6849507251-build.zip"
+        }
+      }
     }
   }
 }
