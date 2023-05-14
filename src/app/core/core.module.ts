@@ -15,6 +15,7 @@ import {SharedModule} from "../shared/shared.module";
 import { CoverLetterComponent } from './components/cover-letter/cover-letter.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {OpenAiInterceptor} from "./interceptors/open-ai.interceptor";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 
 
@@ -36,7 +37,8 @@ import {OpenAiInterceptor} from "./interceptors/open-ai.interceptor";
     MatTooltipModule,
     CoreRoutingModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},

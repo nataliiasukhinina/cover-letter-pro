@@ -10,7 +10,8 @@ import {OpenAiService} from "../../services/open-ai.service";
 export class CoverLetterComponent implements OnInit {
 
   coverLetterForm!: FormGroup;
-  coverLetterText: string = 'test';
+  coverLetterText: string = 'Your cover letter will appear here.';
+  loadingInProgress: boolean = false;
   constructor(private formBuilder: FormBuilder,
               private openAiService: OpenAiService) {
   }
@@ -29,7 +30,8 @@ export class CoverLetterComponent implements OnInit {
   }
 
   getCoverLetter(): void {
-    if(this.coverLetterForm.valid) {
+    if(this.coverLetterForm.valid && !this.loadingInProgress) {
+      this.loadingInProgress = true;
       const company = this.coverLetterForm.get('company')?.value;
       const position = this.coverLetterForm.get('position')?.value;
       const body = {
@@ -41,6 +43,13 @@ export class CoverLetterComponent implements OnInit {
       this.openAiService.getCompletion(body).subscribe(
         (response) => {
           this.coverLetterText = response.choices[0].message.content
+        },
+        (error) => {
+          console.log(error);
+          this.loadingInProgress = false;
+        },
+        () => {
+          this.loadingInProgress = false;
         }
       );
     }
