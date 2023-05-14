@@ -9,12 +9,15 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import { HomePageComponent } from './components/home-page/home-page.component';
+import {CoreRoutingModule} from "./core-routing.module";
 
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    HomePageComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +28,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MatDividerModule,
     MatButtonModule,
     MatListModule,
-    MatTooltipModule
+    MatTooltipModule,
+    CoreRoutingModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}

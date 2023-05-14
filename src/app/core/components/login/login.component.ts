@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatchingFieldsValidator} from "../../validators/matching-fields.validator";
-
+import { Auth } from 'aws-amplify';
+import {Router} from "@angular/router";
+import {AuthService} from "../../services/auth.service";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +15,9 @@ export class LoginComponent implements OnInit{
   hidePassword: boolean = true;
   hideConfirmPassword: boolean = true;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -37,7 +41,22 @@ export class LoginComponent implements OnInit{
 
   onFormSubmit(): void {
     this.loginForm.markAllAsTouched();
-    console.log(this.loginForm.hasError('noMatch'))
+    if(this.loginForm.valid) {
+      const username = this.loginForm.get('username')?.value;
+      const password = this.loginForm.get('password')?.value;
+      this.authService.signIn(username, password).subscribe(
+        (response) => {
+          console.log(response)
+        },
+        (error) => {
+          console.log(error)
+        },
+        () => {
+          console.log('here')
+          this.router.navigate(['/home']);
+        }
+      );
+    }
 
   }
 

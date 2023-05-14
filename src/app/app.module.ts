@@ -4,7 +4,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import {CoreModule} from "./core/core.module";
+import {AmplifyAuthenticatorModule} from "@aws-amplify/ui-angular";
+import {Amplify} from "aws-amplify";
+// @ts-ignore
+import awsconfig from '../aws-exports';
 
+Amplify.configure(awsconfig);
 @NgModule({
   declarations: [
     AppComponent
@@ -13,7 +18,8 @@ import {CoreModule} from "./core/core.module";
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    CoreModule
+    CoreModule,
+    AmplifyAuthenticatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
