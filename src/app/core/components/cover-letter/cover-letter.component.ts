@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {OpenAiService} from "../../services/open-ai.service";
 
 @Component({
   selector: 'demo-cover-letter',
@@ -10,7 +11,8 @@ export class CoverLetterComponent implements OnInit {
 
   coverLetterForm!: FormGroup;
   coverLetterText: string = 'test';
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private openAiService: OpenAiService) {
   }
 
   ngOnInit(): void {
@@ -27,6 +29,22 @@ export class CoverLetterComponent implements OnInit {
   }
 
   getCoverLetter(): void {
+    if(this.coverLetterForm.valid) {
+      const company = this.coverLetterForm.get('company')?.value;
+      const position = this.coverLetterForm.get('position')?.value;
+      const body = {
+        "model": "gpt-3.5-turbo",
+        "messages": [{"role": "user", "content": `Write cover letter for ${position} at ${company}`}],
+        "max_tokens": 500,
+        "temperature": 0
+      }
+
+      this.openAiService.getCompletition(body).subscribe(
+        (response) => {
+          this.coverLetterText = response.choices[0].message.content
+        }
+      );
+    }
 
   }
 

@@ -2,5 +2,6 @@
 import awsconfig from '../aws-exports';
 
 export const environment = {
-  amplify: awsconfig
+  amplify: awsconfig,
+  openAiApiKey: process.env['OPENAI_API_KEY']
 };
