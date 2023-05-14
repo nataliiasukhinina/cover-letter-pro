@@ -13,10 +13,5 @@ export class NavigationComponent implements OnInit{
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.authService.getUser().subscribe(
-      (response) => {
-        this.user = response.username;
-      }
-    );
   }
 }
