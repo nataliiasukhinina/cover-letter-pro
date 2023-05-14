@@ -16,6 +16,7 @@ import { CoverLetterComponent } from './components/cover-letter/cover-letter.com
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {OpenAiInterceptor} from "./interceptors/open-ai.interceptor";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { AppFeaturesComponent } from './components/app-features/app-features.component';
 
 
 
@@ -23,7 +24,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
   declarations: [
     LoginComponent,
     HomePageComponent,
-    CoverLetterComponent
+    CoverLetterComponent,
+    AppFeaturesComponent
   ],
   imports: [
     CommonModule,
