@@ -11,8 +11,9 @@ export class OpenAiService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getCompletition(body: any): Observable<any> {
-    const url = `${this.baseUrl}/chat/completions`;
+  getCompletion(body: any): Observable<any> {
+    console.log(body)
+    const url: string = `${this.baseUrl}/chat/completions`;
     return this.httpClient.post(url, body);
   }
 }

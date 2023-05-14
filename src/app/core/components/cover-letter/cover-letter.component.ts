@@ -35,11 +35,10 @@ export class CoverLetterComponent implements OnInit {
       const body = {
         "model": "gpt-3.5-turbo",
         "messages": [{"role": "user", "content": `Write cover letter for ${position} at ${company}`}],
-        "max_tokens": 500,
-        "temperature": 0
+        "max_tokens": 500
       }
 
-      this.openAiService.getCompletition(body).subscribe(
+      this.openAiService.getCompletion(body).subscribe(
         (response) => {
           this.coverLetterText = response.choices[0].message.content
         }
