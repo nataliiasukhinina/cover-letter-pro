@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit{
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       username: ['', {
-        validators: [Validators.required, Validators.pattern('^[a-zA-Z ]*$')],
+        validators: [Validators.required, Validators.email],
         updateOn: 'submit'
       }],
       password: ['', {
@@ -43,16 +43,7 @@ export class LoginComponent implements OnInit{
     if(this.loginForm.valid) {
       const username = this.loginForm.get('username')?.value;
       const password = this.loginForm.get('password')?.value;
-      this.authService.signIn(username, password).subscribe(
-        (response) => {
-        },
-        (error) => {
-          console.log(error)
-        },
-        () => {
-          this.router.navigate(['/home']);
-        }
-      );
+      this.authService.signIn(username, password);
     }
 
   }

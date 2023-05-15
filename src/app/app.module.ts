@@ -4,13 +4,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import {CoreModule} from "./core/core.module";
-import {AmplifyAuthenticatorModule} from "@aws-amplify/ui-angular";
-import {Amplify} from "aws-amplify";
-// @ts-ignore
-import awsconfig from '../aws-exports';
 import {SharedModule} from "./shared/shared.module";
+import {initializeApp} from "firebase/app";
+import {firebaseConfig} from "../firebase-config";
 
-Amplify.configure(awsconfig);
+const app = initializeApp(firebaseConfig);
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -20,7 +20,6 @@ Amplify.configure(awsconfig);
     BrowserAnimationsModule,
     AppRoutingModule,
     CoreModule,
-    AmplifyAuthenticatorModule,
     SharedModule
   ],
   providers: [],

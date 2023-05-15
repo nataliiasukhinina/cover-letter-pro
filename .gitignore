@@ -70,3 +70,7 @@ secrets.env
 #open ai config
 openai-config.ts
 openai-config.js
+
+#firebase
+firebase-config.ts
+
