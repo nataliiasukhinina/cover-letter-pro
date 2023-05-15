@@ -1,6 +1,5 @@
 import {Injectable} from "@angular/core";
 import {HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
-import {environment} from "../../../environments/environment";
 
 @Injectable()
 export class OpenAiInterceptor implements HttpInterceptor {
@@ -14,8 +13,9 @@ export class OpenAiInterceptor implements HttpInterceptor {
       const openAiRequest: HttpRequest<any> = httpRequest.clone({
         setHeaders: {
           // @ts-ignore
-          Authorization: `Bearer ${environment.openAiApiKey}`,
-          'OpenAI-Organization': environment.openAiOrganizationId
+          Authorization: `Bearer ${process.env.OPENAI_KEY}`,
+          // @ts-ignore
+          'OpenAI-Organization': process.env.OPENAI_ORG
         }
       });
       return next.handle(openAiRequest);
