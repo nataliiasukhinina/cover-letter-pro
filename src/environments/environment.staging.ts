@@ -3,7 +3,7 @@ import awsConfig from '../aws-exports';
 import * as process from "process";
 
 export const environment = {
-  production: true,
+  production: false,
   amplify: awsConfig,
 // @ts-ignore
   openAiApiKey: process ? process.env.secrets.AMPLIFY_OPENAI_OPENAI_API_KEY : '',
