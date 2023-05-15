@@ -19,7 +19,7 @@
         "OPENAI": {
           "secretsPathAmplifyAppId": "d3uymwp91ml3de",
           "deploymentBucketName": "amplify-demoapp-staging-220916-deployment",
-          "s3Key": "amplify-builds/OPENAI-6638426d6f6849507251-build.zip"
+          "s3Key": "amplify-builds/OPENAI-7067632b4a336b43444d-build.zip"
         }
       }
     }
