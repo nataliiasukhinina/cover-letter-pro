@@ -1,1 +1,26 @@
-<router-outlet></router-outlet>
+<!--<amplify-authenticator>-->
+<!--  <ng-template-->
+<!--    amplifySlot="authenticated"-->
+<!--    let-user="user"-->
+<!--    let-signOut="signOut"-->
+<!--  >-->
+<!--    <h1>Welcome {{ user.username }}!</h1>-->
+<!--    <button (click)="signOut()">Sign Out</button>-->
+<!--    <router-outlet></router-outlet>-->
+<!--  </ng-template>-->
+<!--</amplify-authenticator>-->
+<div class="container my-5">
+  <ng-container *ngIf="isLoggedIn">
+    <div class="row">
+      <div class="col-6 px-5">
+        <h1 *ngIf="user">Hi {{user}}</h1>
+      </div>
+      <div class="col-6 px-5">
+        <button class="btn btn-secondary float-end" (click)="onClickLogout()">Sign Out</button>
+      </div>
+    </div>
+    <demo-navigation></demo-navigation>
+
+  </ng-container>
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,51 @@
+<div class="row justify-content-center mt-5">
+
+  <div class="col-12 col-lg-6">
+    <form [formGroup]="coverLetterForm" (ngSubmit)="getCoverLetter()" class="row">
+
+      <div class="col-12 my-2">
+        <mat-form-field>
+          <mat-label>Company</mat-label>
+          <input formControlName="company" matInput placeholder="Enter company name">
+          <mat-hint>Enter the name of the company you are submitting your cover letter to.</mat-hint>
+          <mat-error *ngIf="hasError('company', 'required')">This field is required.</mat-error>
+          <mat-error *ngIf="hasError('company', 'maxLength')">Please enter no more than 25 characters.</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 my-2">
+        <mat-form-field>
+          <mat-label>Position</mat-label>
+          <input formControlName="position" matInput placeholder="Enter position">
+          <mat-hint>Enter the position you are applying for.</mat-hint>
+          <mat-error *ngIf="hasError('position', 'required')">This field is required.</mat-error>
+          <mat-error *ngIf="hasError('position', 'maxLength')">Please enter no more than 25 characters.</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 my-2">
+        <button class="btn btn-success float-end" type="submit" aria-label="Submit form">Submit</button>
+      </div>
+
+    </form>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="callout callout-info" *ngIf="!loadingInProgress; else spinner">
+          {{coverLetterText}}
+        </div>
+        <ng-template #spinner>
+          <div class="row justify-content-center">
+            <div class="col-12">
+              <p>Your Cover Letter is being generated. It might take a minute or so. Thank you for your patience!</p>
+            </div>
+            <div class="col-2">
+              <mat-spinner></mat-spinner>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+  </div>
+</div>

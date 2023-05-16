@@ -9,12 +9,23 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import { HomePageComponent } from './components/home-page/home-page.component';
+import {CoreRoutingModule} from "./core-routing.module";
+import {SharedModule} from "../shared/shared.module";
+import { CoverLetterComponent } from './components/cover-letter/cover-letter.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {OpenAiInterceptor} from "./interceptors/open-ai.interceptor";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { AppFeaturesComponent } from './components/app-features/app-features.component';
 
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    HomePageComponent,
+    CoverLetterComponent,
+    AppFeaturesComponent
   ],
   imports: [
     CommonModule,
@@ -25,10 +36,15 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MatDividerModule,
     MatButtonModule,
     MatListModule,
-    MatTooltipModule
+    MatTooltipModule,
+    CoreRoutingModule,
+    SharedModule,
+    HttpClientModule,
+    MatProgressSpinnerModule
   ],
   providers: [
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+    { provide: HTTP_INTERCEPTORS, useClass: OpenAiInterceptor, multi: true }
   ]
 })
 export class CoreModule { }
