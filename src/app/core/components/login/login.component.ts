@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit{
   loginForm!: FormGroup;
   hidePassword: boolean = true;
   hideConfirmPassword: boolean = true;
+  loading: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
@@ -39,20 +40,26 @@ export class LoginComponent implements OnInit{
   }
 
   onFormSubmit(): void {
-    this.loginForm.markAllAsTouched();
-    if(this.loginForm.valid) {
-      const username = this.loginForm.get('username')?.value;
-      const password = this.loginForm.get('password')?.value;
-      this.authService.signIn(username, password).subscribe(
-        (response) => {
-        },
-        (error) => {
-          console.log(error)
-        },
-        () => {
-          this.router.navigate(['/home']);
-        }
-      );
+    if(!this.loading) {
+      this.loading = true;
+      this.loginForm.markAllAsTouched();
+      if(this.loginForm.valid) {
+        const username = this.loginForm.get('username')?.value;
+        const password = this.loginForm.get('password')?.value;
+        this.authService.signIn(username, password).subscribe(
+          (response) => {
+          },
+          (error) => {
+            this.loading = false;
+            console.log(error)
+          },
+          () => {
+            this.loading = false;
+            this.router.navigate(['/home']);
+          }
+        );
+      }
+
     }
 
   }

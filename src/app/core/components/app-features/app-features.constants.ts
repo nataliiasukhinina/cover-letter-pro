@@ -10,6 +10,10 @@ export const appFeaturesList: AppFeature[] = [
     subHeader: 'API Integration',
     description: 'This application takes user input and sends it to OpenAI as part of a POST API request. The response is then displayed back to the user.'
   }, {
+    header: 'API Key Storage',
+    subHeader: 'API Integration',
+    description: 'The OpenAI API key is stored securely in AWS managed service and is retrieved during deployment.'
+  }, {
     header: 'Reactive Forms',
     subHeader: 'Angular Framework',
     description: 'This application uses Angular Reactive Forms to create forms, and a custom validator was created to enforce password matching.',
