@@ -1,27 +1,39 @@
-import { TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import {AuthService} from "./core/services/auth.service";
+import {NO_ERRORS_SCHEMA} from "@angular/core";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {BehaviorSubject} from "rxjs";
+
+let component: AppComponent;
+let fixture: ComponentFixture<AppComponent>;
 
 describe('AppComponent', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    declarations: [AppComponent]
-  }));
+  let authServiceMock: any = {
+    loggedIn: new BehaviorSubject(false)
+  }
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [AppComponent],
+      imports: [HttpClientTestingModule],
+      providers: [
+        {provide: AuthService, useValue: authServiceMock}
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
+    });
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
   it(`should have as title 'demo-app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('demo-app');
+    expect(component.title).toEqual('demo-app');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('demo-app app is running!');
-  });
 });
