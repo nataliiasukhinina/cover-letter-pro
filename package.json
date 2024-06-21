@@ -27,14 +27,16 @@
     "aws-sdk": "^2.1377.0",
     "bootstrap": "^5.2.3",
     "node-polyfill-webpack-plugin": "^2.0.1",
-    "openai": "^3.2.1",
+    "openai": "^4.52.0",
     "rxjs": "~7.8.0",
+    "source-map-url": "^0.4.1",
     "tslib": "^2.3.0",
-    "zone.js": "~0.13.0"
+    "urix": "^0.1.0",
+    "zone.js": "^0.14.7"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.0.1",
-    "@angular/cli": "~16.0.1",
+    "@angular/cli": "^16.2.14",
     "@angular/compiler-cli": "^16.0.0",
     "@types/jasmine": "~4.3.0",
     "dotenv-webpack": "^8.0.1",
@@ -44,7 +46,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
-    "typescript": "~5.0.2"
+    "typescript": "5.0"
   },
   "browser": {
     "fs": false
