@@ -1,1 +1,10 @@
-<p>login-help works!</p>
+<form>
+  <input type="checkbox" (change)="onChatHistoryToggle()">
+  <label>Show chat history</label>
+</form>
+
+<ng-container *ngIf="showChatHistory">
+  <h2>
+    Chat History
+  </h2>
+</ng-container>
