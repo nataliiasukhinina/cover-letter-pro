@@ -10,8 +10,13 @@ import {Amplify} from "aws-amplify";
 import awsconfig from '../aws-exports';
 import {SharedModule} from "./shared/shared.module";
 import { StoreModule } from '@ngrx/store';
+import { LoginHelpModule } from './public/login-help/login-help.module';
 
 Amplify.configure(awsconfig);
+
+const featureModules = [
+  LoginHelpModule
+];
 @NgModule({
   declarations: [
     AppComponent
@@ -23,7 +28,8 @@ Amplify.configure(awsconfig);
     CoreModule,
     AmplifyAuthenticatorModule,
     SharedModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({}, {}),
+    ...featureModules
   ],
   providers: [],
   bootstrap: [AppComponent]
