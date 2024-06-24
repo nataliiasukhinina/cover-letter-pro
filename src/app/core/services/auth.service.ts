@@ -5,9 +5,10 @@ import { BehaviorSubject } from 'rxjs';
 import { fromPromise} from "rxjs/internal/observable/innerFrom";
 import { map, tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import {Amplify,  Auth } from 'aws-amplify';
+import {Amplify } from 'aws-amplify';
 import {environment} from "../../../environments/environment";
 import {User} from "../models/User";
+import { signUp, signIn, confirmSignUp, getCurrentUser, signOut } from "aws-amplify/auth";
 
 @Injectable()
 export class AuthService {
@@ -23,17 +24,17 @@ export class AuthService {
 
   /** signup */
   signUp(email: string, password: string): Observable<any> {
-    return fromPromise(Auth.signUp(email, password));
+    return fromPromise(signUp({ username: email, password: password }));
   }
 
   /** confirm code */
   confirmSignUp(email: string, code: string): Observable<any> {
-    return fromPromise(Auth.confirmSignUp(email, code));
+    return fromPromise(confirmSignUp({ username: email, confirmationCode: code }));
   }
 
   /** signin */
   signIn(email: string, password: string): Observable<any> {
-    return fromPromise(Auth.signIn(email, password))
+    return fromPromise(signIn({ username: email, password: password }))
       .pipe(
         tap(() => this.loggedIn.next(true))
       );
@@ -41,7 +42,7 @@ export class AuthService {
 
   /** get authenticated state */
   isAuthenticated(): Observable<boolean> {
-    return fromPromise(Auth.currentAuthenticatedUser())
+    return fromPromise(getCurrentUser())
       .pipe(
         map(result => {
           this.loggedIn.next(true);
@@ -57,7 +58,7 @@ export class AuthService {
 
   /** signout */
   signOut() {
-    fromPromise(Auth.signOut())
+    fromPromise(signOut())
       .subscribe(
         result => {
           this.loggedIn.next(false);
@@ -67,7 +68,7 @@ export class AuthService {
       );
   }
 
-  getUser(): Observable<User> {
-    return fromPromise(Auth.currentUserInfo());
+  getUser() {
+    return fromPromise(getCurrentUser());
   }
 }

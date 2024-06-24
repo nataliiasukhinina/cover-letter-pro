@@ -13,38 +13,32 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import {CoreRoutingModule} from "./core-routing.module";
 import {SharedModule} from "../shared/shared.module";
 import { CoverLetterComponent } from './components/cover-letter/cover-letter.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import {OpenAiInterceptor} from "./interceptors/open-ai.interceptor";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { AppFeaturesComponent } from './components/app-features/app-features.component';
 
 
 
-@NgModule({
-  declarations: [
-    LoginComponent,
-    HomePageComponent,
-    CoverLetterComponent,
-    AppFeaturesComponent
-  ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    MatDividerModule,
-    MatButtonModule,
-    MatListModule,
-    MatTooltipModule,
-    CoreRoutingModule,
-    SharedModule,
-    HttpClientModule,
-    MatProgressSpinnerModule
-  ],
-  providers: [
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
-    { provide: HTTP_INTERCEPTORS, useClass: OpenAiInterceptor, multi: true }
-  ]
-})
+@NgModule({ declarations: [
+        LoginComponent,
+        HomePageComponent,
+        CoverLetterComponent,
+        AppFeaturesComponent
+    ], imports: [CommonModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatDividerModule,
+        MatButtonModule,
+        MatListModule,
+        MatTooltipModule,
+        CoreRoutingModule,
+        SharedModule,
+        MatProgressSpinnerModule], providers: [
+        { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
+        { provide: HTTP_INTERCEPTORS, useClass: OpenAiInterceptor, multi: true },
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class CoreModule { }
