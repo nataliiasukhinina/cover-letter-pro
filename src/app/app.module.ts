@@ -9,6 +9,7 @@ import {Amplify} from "aws-amplify";
 // @ts-ignore
 import awsconfig from '../aws-exports';
 import {SharedModule} from "./shared/shared.module";
+import { StoreModule } from '@ngrx/store';
 
 Amplify.configure(awsconfig);
 @NgModule({
@@ -21,7 +22,8 @@ Amplify.configure(awsconfig);
     AppRoutingModule,
     CoreModule,
     AmplifyAuthenticatorModule,
-    SharedModule
+    SharedModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [],
   bootstrap: [AppComponent]
