@@ -11,7 +11,7 @@ import { loginHelpReducer } from './state/login-help.reducer';
   imports: [
     CommonModule,
     LoginHelpRoutingModule,
-    StoreModule.forFeature('login-help', loginHelpReducer)
+    StoreModule.forFeature('loginHelp', loginHelpReducer)
   ]
 })
 export class LoginHelpModule { }
