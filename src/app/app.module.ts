@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,6 +11,7 @@ import awsconfig from '../aws-exports';
 import {SharedModule} from "./shared/shared.module";
 import { StoreModule } from '@ngrx/store';
 import { LoginHelpModule } from './public/login-help/login-help.module';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 Amplify.configure(awsconfig);
 
@@ -29,7 +30,8 @@ const featureModules = [
     AmplifyAuthenticatorModule,
     SharedModule,
     StoreModule.forRoot({}, {}),
-    ...featureModules
+    ...featureModules,
+    StoreDevtoolsModule.instrument({ name: 'Cover Letter App', maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [],
   bootstrap: [AppComponent]

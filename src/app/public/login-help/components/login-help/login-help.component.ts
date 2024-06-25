@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { NgIf } from '@angular/common';
+import { State } from '../../state/login-help.reducer';
 
 @Component({
   selector: 'demo-login-help',
@@ -15,13 +16,12 @@ export class LoginHelpComponent implements OnInit {
 
   showChatHistory = false;
 
-  constructor(private store: Store<any>) {
+  constructor(private store: Store<State>) {
   }
 
   ngOnInit() {
-    this.store.select('login-help').subscribe(
+    this.store.select('loginHelp').subscribe(
       loginHelp => {
-        console.log(loginHelp)
         this.showChatHistory = loginHelp.showChatHistory;
       }
     );

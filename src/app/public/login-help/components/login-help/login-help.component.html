@@ -1,5 +1,9 @@
 <form>
-  <input type="checkbox" (change)="onChatHistoryToggle()">
+  <input
+    type="checkbox"
+    (change)="onChatHistoryToggle()"
+    [checked]="showChatHistory"
+  >
   <label>Show chat history</label>
 </form>
 
