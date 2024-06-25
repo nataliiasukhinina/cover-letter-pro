@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { NgIf } from '@angular/common';
-import { State } from '../../state/login-help.reducer';
+import { getShowChatHistory, State } from '../../state/login-help.reducer';
 
 @Component({
   selector: 'demo-login-help',
@@ -20,9 +20,9 @@ export class LoginHelpComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.select('loginHelp').subscribe(
-      loginHelp => {
-        this.showChatHistory = loginHelp.showChatHistory;
+    this.store.select(getShowChatHistory).subscribe(
+      showChatHistory => {
+        this.showChatHistory = showChatHistory;
       }
     );
   }
