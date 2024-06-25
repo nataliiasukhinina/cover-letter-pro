@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { NgIf } from '@angular/common';
-import { getShowChatHistory, State } from '../../state/login-help.reducer';
+import { getShowChatHistory } from '../../state/login-help.selectors';
+import { State } from '../../state/login-help.model';
+import * as LoginHelpActions from  '../../state/login-help.actions';
 
 @Component({
   selector: 'demo-login-help',
@@ -28,8 +30,6 @@ export class LoginHelpComponent implements OnInit {
   }
 
   onChatHistoryToggle() {
-    this.store.dispatch({
-      type: '[Login Help] Toggle chat history'
-    });
+    this.store.dispatch(LoginHelpActions.toggleShowChatHistory());
   }
 }
