@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "storybook": "ng run demo-app:storybook",
+    "build-storybook": "ng run demo-app:build-storybook"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +25,8 @@
     "@angular/router": "^18.0.4",
     "@aws-amplify/ui": "^6.0.16",
     "@aws-amplify/ui-angular": "^5.0.16",
+    "@ngrx/store": "^18.0.0",
+    "@ngrx/store-devtools": "^18.0.0",
     "@popperjs/core": "^2.11.7",
     "aws-amplify": "^6.3.7",
     "aws-sdk": "^2.1377.0",
@@ -39,6 +43,16 @@
     "@angular-devkit/build-angular": "^18.0.5",
     "@angular/cli": "^18.0.5",
     "@angular/compiler-cli": "^18.0.4",
+    "@chromatic-com/storybook": "^1.6.1",
+    "@compodoc/compodoc": "^1.1.25",
+    "@storybook/addon-docs": "^8.2.5",
+    "@storybook/addon-essentials": "^8.2.5",
+    "@storybook/addon-interactions": "^8.2.5",
+    "@storybook/addon-links": "^8.2.5",
+    "@storybook/addon-onboarding": "^8.2.5",
+    "@storybook/angular": "^8.2.5",
+    "@storybook/blocks": "^8.2.5",
+    "@storybook/test": "^8.2.5",
     "@types/jasmine": "^5.1.4",
     "dotenv-webpack": "^8.0.1",
     "jasmine-core": "^5.1.2",
@@ -47,6 +61,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
+    "storybook": "^8.2.5",
     "typescript": "^5.4.5"
   },
   "browser": {
