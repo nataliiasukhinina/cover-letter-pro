@@ -1,4 +1,17 @@
 {
+  "main": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-coverletterpro-main-81b50-authRole",
+      "UnauthRoleArn": "arn:aws:iam::624826974879:role/amplify-coverletterpro-main-81b50-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::624826974879:role/amplify-coverletterpro-main-81b50-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-coverletterpro-main-81b50-deployment",
+      "UnauthRoleName": "amplify-coverletterpro-main-81b50-unauthRole",
+      "StackName": "amplify-coverletterpro-main-81b50",
+      "StackId": "arn:aws:cloudformation:us-east-1:624826974879:stack/amplify-coverletterpro-main-81b50/207ab3f0-5cf5-11ef-a1fc-0affd47115eb",
+      "AmplifyAppId": "d17dqrcstuim1s"
+    }
+  },
   "staging": {
     "awscloudformation": {
       "AuthRoleName": "amplify-demoapp-staging-194914-authRole",
@@ -9,7 +22,7 @@
       "UnauthRoleName": "amplify-demoapp-staging-194914-unauthRole",
       "StackName": "amplify-demoapp-staging-194914",
       "StackId": "arn:aws:cloudformation:us-east-2:624826974879:stack/amplify-demoapp-staging-194914/7b9b15e0-f383-11ed-8efb-0265e5e2de31",
-      "AmplifyAppId": "dnrqv3lkw2zj5"
+      "AmplifyAppId": "d17dqrcstuim1s"
     },
     "categories": {
       "auth": {
@@ -27,7 +40,7 @@
       "UnauthRoleName": "amplify-demoapp-dev-91124-unauthRole",
       "StackName": "amplify-demoapp-dev-91124",
       "StackId": "arn:aws:cloudformation:us-east-2:624826974879:stack/amplify-demoapp-dev-91124/9395bd60-f3f3-11ed-9df1-065be46edf7d",
-      "AmplifyAppId": "dnrqv3lkw2zj5"
+      "AmplifyAppId": "d17dqrcstuim1s"
     },
     "categories": {
       "auth": {
@@ -45,7 +58,7 @@
       "UnauthRoleName": "amplify-demoapp-prod-92255-unauthRole",
       "StackName": "amplify-demoapp-prod-92255",
       "StackId": "arn:aws:cloudformation:us-east-2:624826974879:stack/amplify-demoapp-prod-92255/285f6170-f3f5-11ed-8bef-0ad7eaee04f9",
-      "AmplifyAppId": "dnrqv3lkw2zj5"
+      "AmplifyAppId": "d17dqrcstuim1s"
     },
     "categories": {
       "auth": {
@@ -63,11 +76,12 @@
       "UnauthRoleName": "amplify-demoapp-develop-cfd72-unauthRole",
       "StackName": "amplify-demoapp-develop-cfd72",
       "StackId": "arn:aws:cloudformation:us-east-2:624826974879:stack/amplify-demoapp-develop-cfd72/97804f40-2ffb-11ef-844a-06475977c107",
-      "AmplifyAppId": "dnrqv3lkw2zj5"
+      "AmplifyAppId": "d17dqrcstuim1s"
     },
     "categories": {
       "auth": {
-        "DemoApp": {}
+        "DemoApp": {},
+        "demoappb4ee185f": {}
       }
     }
   }
