@@ -7,8 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "storybook": "ng run demo-app:storybook",
-    "build-storybook": "ng run demo-app:build-storybook"
+    "storybook": "ng run cover-letter-pro:storybook",
+    "build-storybook": "ng run cover-letter-pro:build-storybook"
   },
   "private": true,
   "dependencies": {
@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.0.5",
-    "@angular/cli": "^17.3.8",
+    "@angular/cli": "^18.0.4",
     "@angular/compiler-cli": "^18.0.4",
     "@chromatic-com/storybook": "^1.6.1",
     "@compodoc/compodoc": "^1.1.25",
