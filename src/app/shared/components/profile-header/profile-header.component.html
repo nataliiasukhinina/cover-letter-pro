@@ -1,0 +1,55 @@
+<div class="profile-header">
+  <div class="profile-container">
+    <div class="profile-info" *ngIf="userProfile">
+      <div class="user-details">
+        <h2 class="greeting">Hi, {{ userProfile.firstName || userProfile.username }}! 👋</h2>
+        <p class="user-title" *ngIf="userProfile.title">{{ userProfile.title }}</p>
+      </div>
+    </div>
+    
+    <div class="profile-actions">
+      <div class="profile-dropdown" (clickOutside)="closeDropdown()">
+        <button class="profile-button" (click)="toggleDropdown()" [class.active]="isDropdownOpen">
+          <div class="avatar" *ngIf="userProfile">
+            <img *ngIf="userProfile.avatarUrl" [src]="userProfile.avatarUrl" [alt]="userProfile.username">
+            <span *ngIf="!userProfile.avatarUrl" class="avatar-initials">{{ initials }}</span>
+          </div>
+          <span class="username">{{ userProfile?.username }}</span>
+          <mat-icon class="dropdown-icon">{{ isDropdownOpen ? 'expand_less' : 'expand_more' }}</mat-icon>
+        </button>
+        
+        <div class="dropdown-menu" *ngIf="isDropdownOpen" [@slideDown]>
+          <div class="dropdown-header">
+            <div class="dropdown-avatar">
+              <img *ngIf="userProfile?.avatarUrl" [src]="userProfile.avatarUrl" [alt]="userProfile?.username">
+              <span *ngIf="!userProfile?.avatarUrl" class="dropdown-initials">{{ initials }}</span>
+            </div>
+            <div class="dropdown-user-info">
+              <h4>{{ userProfile?.firstName }} {{ userProfile?.lastName }}</h4>
+              <p>{{ userProfile?.email }}</p>
+            </div>
+          </div>
+          
+          <div class="dropdown-divider"></div>
+          
+          <button class="dropdown-item" (click)="navigateToProfile()">
+            <mat-icon>person</mat-icon>
+            <span>My Profile</span>
+          </button>
+          
+          <button class="dropdown-item" (click)="navigateToSettings()">
+            <mat-icon>settings</mat-icon>
+            <span>Settings</span>
+          </button>
+          
+          <div class="dropdown-divider"></div>
+          
+          <button class="dropdown-item logout" (click)="onLogout()">
+            <mat-icon>logout</mat-icon>
+            <span>Sign Out</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
