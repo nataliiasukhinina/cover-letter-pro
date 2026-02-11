@@ -1,21 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { MaterialModule } from './material.module';
 import { NavigationComponent } from './components/navigation/navigation.component';
-import {RouterLink, RouterLinkActive} from "@angular/router";
-
-
+import { ProfileHeaderComponent } from './components/profile-header/profile-header.component';
+import { ClickOutsideDirective } from './directives/click-outside.directive';
 
 @NgModule({
   declarations: [
-    NavigationComponent
+    NavigationComponent,
+    ProfileHeaderComponent,
+    ClickOutsideDirective
   ],
   imports: [
     CommonModule,
-    RouterLinkActive,
-    RouterLink
+    RouterModule,
+    MaterialModule
   ],
   exports: [
-    NavigationComponent
+    NavigationComponent,
+    ProfileHeaderComponent,
+    ClickOutsideDirective,
+    MaterialModule
   ]
 })
 export class SharedModule { }
