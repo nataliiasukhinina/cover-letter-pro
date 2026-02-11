@@ -5,6 +5,7 @@ import {authGuard} from "./guards/auth.guard";
 import {AuthService} from "./services/auth.service";
 import {CoverLetterComponent} from "./components/cover-letter/cover-letter.component";
 import {AppFeaturesComponent} from "./components/app-features/app-features.component";
+import {ProfileComponent} from "./components/profile/profile.component";
 
 const routes: Routes = [
   {
@@ -14,6 +15,14 @@ const routes: Routes = [
   }, {
     path: 'home',
     component: HomePageComponent,
+    canActivate: [authGuard]
+  }, {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [authGuard]
+  }, {
+    path: 'settings',
+    component: ProfileComponent, // Reuse profile component for settings
     canActivate: [authGuard]
   }, {
     path: 'cover-letter',
