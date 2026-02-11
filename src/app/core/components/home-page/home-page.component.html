@@ -1,16 +1,122 @@
-<div class="row justify-content-center mt-5">
-  <div class="col-12 col-lg-6">
-    <h1>Welcome!</h1>
+<div class="home-page" *ngIf="userProfile">
+  <div class="welcome-section">
+    <div class="welcome-card">
+      <h1 class="text-gradient">Welcome Back!</h1>
+      <p class="lead">{{ userProfile.firstName }} {{ userProfile.lastName }}</p>
+    </div>
   </div>
-</div>
-<div class="row justify-content-center">
-  <div class="col-12 col-lg-6">
-    <h2>My name is Nataliia Sukhinina.</h2>
-    <p>I am a Frontend Developer with 7 years of experience in Angular.</p>
-    <p>I have a strong understanding of the Angular framework. I am proficient in a variety of Angular features, including pipes, validators, interceptors, and routing. I am also experienced in working with a variety of Angular libraries and tools such as Angular Material and AG Grid.</p>
-    <p>In my previous roles I was responsible for the development and maintenance of a variety of Angular applications. I have experience developing applications from scratch and working with a team to improve existing applications.</p>
-    <p>I am a curious and self-motivated learner who is able to learn new skills quickly and effectively. Right now my areas of interest are AWS and AI.</p>
-    <p class="lead"> In fact, this cover letter was written with the help of one of the AI chats.</p>
-    <p>With my web application, you can <b>generate your own cover letter</b> for a specific company and position you are applying for. Click on Create Cover Letter at the top and try it out!</p>
+
+  <div class="content-grid">
+    <!-- About Section -->
+    <div class="card about-card">
+      <div class="card-header">
+        <mat-icon>person</mat-icon>
+        <h2>About Me</h2>
+      </div>
+      <div class="card-body">
+        <div class="profile-detail">
+          <mat-icon>badge</mat-icon>
+          <div>
+            <h4>{{ userProfile.title || 'No title set' }}</h4>
+            <p *ngIf="userProfile.company">{{ userProfile.company }}</p>
+          </div>
+        </div>
+        
+        <div class="profile-detail" *ngIf="userProfile.location">
+          <mat-icon>location_on</mat-icon>
+          <div>
+            <h4>Location</h4>
+            <p>{{ userProfile.location }}</p>
+          </div>
+        </div>
+        
+        <div class="profile-detail" *ngIf="userProfile.yearsOfExperience">
+          <mat-icon>work</mat-icon>
+          <div>
+            <h4>Experience</h4>
+            <p>{{ userProfile.yearsOfExperience }} years</p>
+          </div>
+        </div>
+        
+        <div class="bio" *ngIf="userProfile.bio">
+          <p>{{ userProfile.bio }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="card skills-card" *ngIf="userProfile.skills && userProfile.skills.length > 0">
+      <div class="card-header">
+        <mat-icon>psychology</mat-icon>
+        <h2>Skills</h2>
+      </div>
+      <div class="card-body">
+        <div class="skills-list">
+          <span class="skill-badge" *ngFor="let skill of userProfile.skills">
+            {{ skill }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="card actions-card">
+      <div class="card-header">
+        <mat-icon>settings</mat-icon>
+        <h2>Quick Actions</h2>
+      </div>
+      <div class="card-body">
+        <button mat-raised-button color="primary" routerLink="/cover-letter" class="action-btn">
+          <mat-icon>description</mat-icon>
+          Create Cover Letter
+        </button>
+        <button mat-raised-button routerLink="/profile" class="action-btn">
+          <mat-icon>edit</mat-icon>
+          Edit Profile
+        </button>
+        <button mat-raised-button routerLink="/app-features" class="action-btn">
+          <mat-icon>explore</mat-icon>
+          Explore Features
+        </button>
+      </div>
+    </div>
+
+    <!-- Social Links -->
+    <div class="card social-card" *ngIf="userProfile.linkedIn || userProfile.github || userProfile.website">
+      <div class="card-header">
+        <mat-icon>link</mat-icon>
+        <h2>Connect</h2>
+      </div>
+      <div class="card-body">
+        <a *ngIf="userProfile.linkedIn" [href]="userProfile.linkedIn" target="_blank" class="social-link">
+          <mat-icon>link</mat-icon>
+          <span>LinkedIn</span>
+          <mat-icon class="external">open_in_new</mat-icon>
+        </a>
+        <a *ngIf="userProfile.github" [href]="userProfile.github" target="_blank" class="social-link">
+          <mat-icon>link</mat-icon>
+          <span>GitHub</span>
+          <mat-icon class="external">open_in_new</mat-icon>
+        </a>
+        <a *ngIf="userProfile.website" [href]="userProfile.website" target="_blank" class="social-link">
+          <mat-icon>language</mat-icon>
+          <span>Website</span>
+          <mat-icon class="external">open_in_new</mat-icon>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- App Info -->
+  <div class="info-section">
+    <div class="info-card">
+      <mat-icon>lightbulb</mat-icon>
+      <h3>About This Application</h3>
+      <p>With this web application, you can <strong>generate your own professional cover letter</strong> for specific companies and positions you're applying for. The tool uses AI to help craft personalized, compelling cover letters that highlight your unique skills and experience.</p>
+      <button mat-raised-button color="primary" routerLink="/cover-letter">
+        Try Cover Letter Generator
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </div>
   </div>
 </div>
