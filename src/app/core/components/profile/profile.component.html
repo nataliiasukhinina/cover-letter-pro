@@ -1,0 +1,159 @@
+<div class="profile-page">
+  <div class="container">
+    <div class="profile-card">
+      <!-- Profile Header -->
+      <div class="profile-card-header">
+        <div class="avatar-section">
+          <div class="avatar-wrapper">
+            <img *ngIf="userProfile?.avatarUrl" [src]="userProfile.avatarUrl" [alt]="userProfile?.username" class="avatar-large">
+            <div *ngIf="!userProfile?.avatarUrl" class="avatar-large avatar-placeholder">
+              {{ getInitials() }}
+            </div>
+            <button class="avatar-edit-btn" (click)="fileInput.click()">
+              <mat-icon>photo_camera</mat-icon>
+            </button>
+            <input #fileInput type="file" accept="image/*" (change)="onFileSelected($event)" style="display: none;">
+          </div>
+        </div>
+        
+        <div class="header-info">
+          <h1>{{ userProfile?.firstName }} {{ userProfile?.lastName }}</h1>
+          <p class="subtitle">{{ userProfile?.title || 'No title set' }}</p>
+        </div>
+        
+        <div class="header-actions">
+          <button mat-raised-button color="primary" (click)="toggleEdit()" *ngIf="!isEditing">
+            <mat-icon>edit</mat-icon>
+            Edit Profile
+          </button>
+          <button mat-stroked-button (click)="toggleEdit()" *ngIf="isEditing">
+            <mat-icon>close</mat-icon>
+            Cancel
+          </button>
+        </div>
+      </div>
+
+      <!-- Profile Content -->
+      <div class="profile-card-body">
+        <form [formGroup]="profileForm" (ngSubmit)="onSaveProfile()">
+          
+          <!-- Personal Information -->
+          <div class="section">
+            <h2 class="section-title">
+              <mat-icon>person</mat-icon>
+              Personal Information
+            </h2>
+            
+            <div class="form-grid">
+              <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="firstName" [readonly]="!isEditing">
+                <mat-error *ngIf="hasError('firstName', 'required')">First name is required</mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lastName" [readonly]="!isEditing">
+                <mat-error *ngIf="hasError('lastName', 'required')">Last name is required</mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email" [readonly]="!isEditing">
+                <mat-icon matPrefix>email</mat-icon>
+                <mat-error *ngIf="hasError('email', 'required')">Email is required</mat-error>
+                <mat-error *ngIf="hasError('email', 'email')">Invalid email format</mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Phone</mat-label>
+                <input matInput formControlName="phone" [readonly]="!isEditing">
+                <mat-icon matPrefix>phone</mat-icon>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Location</mat-label>
+                <input matInput formControlName="location" [readonly]="!isEditing">
+                <mat-icon matPrefix>location_on</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!-- Professional Information -->
+          <div class="section">
+            <h2 class="section-title">
+              <mat-icon>work</mat-icon>
+              Professional Information
+            </h2>
+            
+            <div class="form-grid">
+              <mat-form-field appearance="outline">
+                <mat-label>Job Title</mat-label>
+                <input matInput formControlName="title" [readonly]="!isEditing">
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Company</mat-label>
+                <input matInput formControlName="company" [readonly]="!isEditing">
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Years of Experience</mat-label>
+                <input matInput type="number" formControlName="yearsOfExperience" [readonly]="!isEditing">
+              </mat-form-field>
+            </div>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Bio</mat-label>
+              <textarea matInput formControlName="bio" rows="4" [readonly]="!isEditing" 
+                        placeholder="Tell us about yourself..."></textarea>
+              <mat-hint align="end">{{ profileForm.get('bio')?.value?.length || 0 }}/500</mat-hint>
+              <mat-error *ngIf="hasError('bio', 'maxlength')">Bio must be less than 500 characters</mat-error>
+            </mat-form-field>
+          </div>
+
+          <!-- Social Links -->
+          <div class="section">
+            <h2 class="section-title">
+              <mat-icon>link</mat-icon>
+              Social Links
+            </h2>
+            
+            <div class="form-grid">
+              <mat-form-field appearance="outline">
+                <mat-label>LinkedIn</mat-label>
+                <input matInput formControlName="linkedIn" [readonly]="!isEditing" 
+                       placeholder="https://linkedin.com/in/username">
+                <mat-icon matPrefix>link</mat-icon>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>GitHub</mat-label>
+                <input matInput formControlName="github" [readonly]="!isEditing" 
+                       placeholder="https://github.com/username">
+                <mat-icon matPrefix>link</mat-icon>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Website</mat-label>
+                <input matInput formControlName="website" [readonly]="!isEditing" 
+                       placeholder="https://yourwebsite.com">
+                <mat-icon matPrefix>language</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!-- Save Button -->
+          <div class="form-actions" *ngIf="isEditing">
+            <button mat-raised-button color="primary" type="submit" 
+                    [disabled]="!profileForm.valid || isSaving">
+              <mat-icon *ngIf="!isSaving">save</mat-icon>
+              <mat-spinner *ngIf="isSaving" diameter="20"></mat-spinner>
+              {{ isSaving ? 'Saving...' : 'Save Changes' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
