@@ -1,0 +1,279 @@
+@import '../../../../styles/variables';
+
+.home-page {
+  padding: 2rem 0;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.welcome-section {
+  margin-bottom: 2rem;
+}
+
+.welcome-card {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: white;
+  border-radius: $border-radius-xl;
+  box-shadow: $shadow-lg;
+
+  h1 {
+    font-size: 2.5rem;
+    margin: 0 0 1rem 0;
+    font-weight: 800;
+  }
+
+  .lead {
+    font-size: 1.5rem;
+    color: $gray-600;
+    margin: 0;
+    font-weight: 500;
+  }
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+  overflow: hidden;
+  transition: all $transition-base;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+
+  .card-header {
+    padding: 1.5rem;
+    background: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    mat-icon {
+      font-size: 28px;
+      width: 28px;
+      height: 28px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: white;
+    }
+  }
+
+  .card-body {
+    padding: 1.5rem;
+  }
+}
+
+.profile-detail {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid $gray-200;
+
+  &:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  mat-icon {
+    color: $primary-color;
+    flex-shrink: 0;
+  }
+
+  h4 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1rem;
+    color: $gray-800;
+  }
+
+  p {
+    margin: 0;
+    color: $gray-600;
+    font-size: 0.9375rem;
+  }
+}
+
+.bio {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid $gray-200;
+
+  p {
+    color: $gray-700;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+.skills-card {
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .skill-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, rgba($primary-color, 0.1) 0%, rgba($secondary-color, 0.1) 100%);
+    color: $primary-color;
+    border-radius: $border-radius-full;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all $transition-fast;
+
+    &:hover {
+      background: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
+      color: white;
+      transform: scale(1.05);
+    }
+  }
+}
+
+.actions-card {
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    .action-btn {
+      width: 100%;
+      justify-content: flex-start;
+      padding: 0.875rem 1.25rem;
+      text-transform: none;
+      font-weight: 600;
+
+      mat-icon {
+        margin-right: 0.75rem;
+      }
+    }
+  }
+}
+
+.social-card {
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.875rem 1rem;
+      background: $gray-50;
+      border-radius: $border-radius-md;
+      color: $gray-700;
+      text-decoration: none;
+      transition: all $transition-fast;
+
+      mat-icon {
+        color: $primary-color;
+
+        &.external {
+          margin-left: auto;
+          font-size: 18px;
+          width: 18px;
+          height: 18px;
+          color: $gray-400;
+        }
+      }
+
+      span {
+        flex: 1;
+        font-weight: 500;
+      }
+
+      &:hover {
+        background: linear-gradient(135deg, rgba($primary-color, 0.1) 0%, rgba($secondary-color, 0.1) 100%);
+        transform: translateX(4px);
+
+        mat-icon.external {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
+
+.info-section {
+  margin-top: 2rem;
+}
+
+.info-card {
+  background: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: $border-radius-xl;
+  box-shadow: $shadow-lg;
+  text-align: center;
+
+  mat-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    color: white;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+  }
+
+  h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0 0 1.5rem 0;
+    opacity: 0.95;
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+
+  button {
+    background: white;
+    color: $primary-color;
+    font-weight: 600;
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+      margin-left: 0.5rem;
+    }
+
+    &:hover {
+      background: $gray-50;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
